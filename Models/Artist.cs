@@ -6,13 +6,15 @@ namespace CdOrganizer.Models
   {
     private string _cdName;
     private string _genre;
+    private int _year;
     private int _cdId;
     private static List<CD> _cdList = new List<CD> ();
 
-    public CD (string cdName, string genre)
+    public CD (string cdName, string genre, int year)
     {
       _cdName = cdName;
       _genre = genre;
+      _year = year;
       _cdList.Add(this);
       _cdId = _cdList.Count;
     }
@@ -33,7 +35,15 @@ namespace CdOrganizer.Models
     {
       return _genre;
     }
-    public List<CD> GetAllCds()
+    public void SetYear(int year)
+    {
+      _year = year;
+    }
+    public int GetYear()
+    {
+      return _year;
+    }
+    public static List<CD> GetAllCds()
     {
       return _cdList;
     }
@@ -45,13 +55,12 @@ namespace CdOrganizer.Models
     {
       return _cdList[searchId -1];
     }
-
   }
   public class Artist
   {
     private string _artistName;
     private int _artistId;
-    private List<CD> _cdList;
+    private List<CD> _cdList = new List<CD>();
     private static List<Artist> _artistList = new List<Artist>();
 
     public Artist(string artistName)
@@ -59,7 +68,7 @@ namespace CdOrganizer.Models
       _artistName = artistName;
       _artistList.Add(this);
       _artistId = _artistList.Count;
-      _cdList = new List<CD>();
+      // _cdList = new List<CD>();
     }
     public void SetArtistName(string artistName)
     {
@@ -76,6 +85,14 @@ namespace CdOrganizer.Models
     public int GetArtistId()
     {
       return _artistId;
+    }
+    public static List<CD> GetAllCdList()
+    {
+      return CD.GetAllCds();
+    }
+    public static List<Artist> GetAllArtist()
+    {
+      return  _artistList;
     }
   }
 }

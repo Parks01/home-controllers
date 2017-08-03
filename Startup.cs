@@ -31,7 +31,7 @@ namespace CdOrganizer
       {
         routes.MapRoute(
           name: "default",
-          template: "{controller=Home}/{action=In}/{id?}");
+          template: "{controller=Home}/{action=Index}/{id?}");
       });
     }
   }

@@ -1,0 +1,12 @@
+@{
+  Layout = "_Layout";
+}
+
+<h2>We found the following artists in your catalog.</h2>
+
+@foreach(var artist in Model)
+{
+  <p>@artist.GetArtistName()</p>
+}
+
+<a href="/"><button class="btn btn-lg btn-primary">Home</button></a>
